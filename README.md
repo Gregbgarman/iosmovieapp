@@ -8,7 +8,10 @@
 - The only pod used in this project is AlamofireImage
 
 ### Gallery
-<img src="https://github.com/Gregbgarman/iosmovieapp/blob/main/Screen%20Shot%202021-12-16%20at%202.36.40%20AM.png" width=200> &nbsp; &nbsp; &nbsp; 
+<img src="https://github.com/Gregbgarman/iosmovieapp/blob/main/image3.png" width=200> &nbsp; &nbsp; &nbsp; 
 <img src="https://github.com/Gregbgarman/iosmovieapp/blob/main/run1.gif" width=200> &nbsp; &nbsp; &nbsp; 
 <img src="https://github.com/Gregbgarman/iosmovieapp/blob/main/image2.png" width=370>&nbsp;&nbsp; &nbsp;
-<img src="https://github.com/Gregbgarman/iosmovieapp/blob/main/Screen%20Shot%202021-12-16%20at%202.35.57%20AM.png" width=200> <br>
+<img src="https://github.com/Gregbgarman/iosmovieapp/blob/main/Screen%20Shot%202021-12-16%20at%202.35.57%20AM.png" width=200>&nbsp; &nbsp; &nbsp; 
+<img src="https://github.com/Gregbgarman/iosmovieapp/blob/main/image4.png" width=200>
+
+<br>
