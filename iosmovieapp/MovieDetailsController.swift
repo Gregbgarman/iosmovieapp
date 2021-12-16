@@ -12,6 +12,7 @@ import WebKit
 
 class MovieDetailsController: UIViewController, WKUIDelegate {
 
+    
     var TheMovie:[String:Any]!
     private var VideoResults = [[String:Any]]()      //contains arrays of dictionaries
     private var CastResults = [[String:Any]]()
@@ -75,7 +76,7 @@ class MovieDetailsController: UIViewController, WKUIDelegate {
     }
     
     func SecondAPICall(MovieId:String) -> Void {
-        let CastURL = URL(string: "https://api.themoviedb.org/3/movie/" + MovieId + "/credits?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        let CastURL = URL(string: "https://api.themoviedb.org/3/movie/" + MovieId + "/credits?api_key=")!
         let request = URLRequest(url: CastURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -124,7 +125,7 @@ class MovieDetailsController: UIViewController, WKUIDelegate {
     
     func FirstAPICall(MovieId:String) -> Void {
        
-        let VideoURL = URL(string: "https://api.themoviedb.org/3/movie/" + MovieId + "/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        let VideoURL = URL(string: "https://api.themoviedb.org/3/movie/" + MovieId + "/videos?api_key=")!
         let request = URLRequest(url: VideoURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in

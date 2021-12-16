@@ -326,7 +326,7 @@
             </objects>
             <point key="canvasLocation" x="-946.37681159420299" y="1779.9107142857142"/>
         </scene>
-        <!--Currently Playing-->
+        <!--Recent Movies-->
         <scene sceneID="2Fb-Ex-xdt">
             <objects>
                 <viewController id="hPH-HX-tPG" customClass="AllMoviesViewController" customModule="iosmovieapp" customModuleProvider="target" sceneMemberID="viewController">
@@ -384,7 +384,7 @@
                             <constraint firstItem="JRg-TJ-ITT" firstAttribute="trailing" secondItem="XpK-rM-kkq" secondAttribute="trailing" id="unq-lG-jOM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Currently Playing" id="gM5-YG-QOC"/>
+                    <navigationItem key="navigationItem" title="Recent Movies" id="gM5-YG-QOC"/>
                     <connections>
                         <outlet property="CVMovies" destination="JRg-TJ-ITT" id="v1B-TT-kVE"/>
                     </connections>
