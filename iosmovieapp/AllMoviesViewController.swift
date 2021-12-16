@@ -13,6 +13,7 @@ class AllMoviesViewController: UIViewController, UICollectionViewDataSource, UIC
 
     @IBOutlet weak var CVMovies: UICollectionView!
     private var Movies=[[String:Any]]()
+    private var MovieTitlesSet = Set<String>()      //to avoid adding duplicate movies
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Movies.count
@@ -46,9 +47,13 @@ class AllMoviesViewController: UIViewController, UICollectionViewDataSource, UIC
         let width=(view.frame.size.width-layout.minimumInteritemSpacing*2)/3     //gets width of screen and will change based on phone app is running on
         
         layout.itemSize=CGSize(width: width, height: width*3/2)
-        
-        
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        QueryMovies(PageNumber:"1")
+      
+    }
+    
+    
+    func QueryMovies(PageNumber:String) -> Void {
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&page=" + PageNumber)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -58,14 +63,31 @@ class AllMoviesViewController: UIViewController, UICollectionViewDataSource, UIC
              }
              else if let data = data {
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-
-                self.Movies=dataDictionary["results"]as! [[String:Any]]  //getting the json results
+                    let TheResults=dataDictionary["results"] as! [[String:Any]]  //getting the json results
+                 
+                 for movie in TheResults{       //iterating through array of dictionaries
+                     
+                     if !self.MovieTitlesSet.contains(movie["title"] as! String){       //don't want to add duplicates
+                         self.Movies.append(movie)                                  //adding dictionary to our array
+                         self.MovieTitlesSet.insert(movie["title"] as! String)
+                     }
+                 }
                 
-                self.CVMovies.reloadData()
-                
+                     self.CVMovies.reloadData()
+                  
              }
+            if PageNumber == "1"{                   //recursively calling this fxn so it always adds movies in certain order
+                self.QueryMovies(PageNumber:"2")
+            }
+            
+            else if PageNumber == "2"{
+                self.QueryMovies(PageNumber:"3")
+            }
+            
+            
         }
         task.resume()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,7 +99,5 @@ class AllMoviesViewController: UIViewController, UICollectionViewDataSource, UIC
         let detailsViewController=segue.destination as! MovieDetailsController
         detailsViewController.TheMovie=movie
     }
-
-    
 
 }

@@ -157,7 +157,6 @@ class MovieDetailsController: UIViewController, WKUIDelegate {
                  let YoutubeURL = URL(string: "https://www.youtube.com/embed/" + YoutubeKey)!
 
                  
-                 
                 self.WVyoutube.load(URLRequest(url: YoutubeURL))
              }
         }
